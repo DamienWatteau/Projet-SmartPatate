@@ -9,9 +9,6 @@ float freq[N];                                                 //-Filtered resul
 int sizeOfArray = N;
 float peakVoltage = 0;
 float peakFreq = 0;
-float seuilRien = 55;                                          //trouver la bonne valeur
-float seuil1doigt = 100;                                       //trouver la bonne valeur
-float seuil2doigts = 145;                                      //trouver la bonne valeur
    
 void setup()
 {
@@ -65,7 +62,7 @@ void loop()
   Serial.print("peakfreq = ");
   Serial.println(peakFreq);
  
-  if(peakFreq < seuilRien)
+  if(peakFreq < 60)
   {
     digitalWrite(3, LOW);
     digitalWrite(2, LOW);
@@ -74,7 +71,7 @@ void loop()
   }
  
   else{
-    if(peakFreq < seuil1doigt)
+    if(peakFreq > 90 && peakFreq < 140)
     {                  
       digitalWrite(2, LOW);
       digitalWrite(4, LOW);
